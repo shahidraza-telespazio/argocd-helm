@@ -13,7 +13,7 @@ spec:
     path: helm/charts/myapp  # Update this to point to the directory containing your Helm chart within the repo.
     helm:
       valueFiles:  # Specify the Helm values file(s) you want to use
-        - helm/values.yaml
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
