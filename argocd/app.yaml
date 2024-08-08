@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/shahidraza-telespazio/argocd-helm  # This is the URL of your Git repository containing the Helm chart.
     targetRevision: HEAD  # The branch or tag where your Helm chart is located.
-    path: helm/charts/myapp  # Update this to point to the directory containing your Helm chart within the repo.
+    path: argocd  # Update this to point to the directory containing your Helm chart within the repo.
     helm:
       valueFiles:  # Specify the Helm values file(s) you want to use
         - values.yaml
