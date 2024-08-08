@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm  # This can remain the same
+  namespace: argocd
+spec:
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/shahidraza-telespazio/argocd-helm  # This is the URL of your Git repository containing the Helm chart.
+    targetRevision: HEAD  # The branch or tag where your Helm chart is located.
+    path: argocd  # Update this to point to the directory containing your Helm chart within the repo.
+    helm:
+      valueFiles:  # Specify the Helm values file(s) you want to use
+        - helm/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: helmapp  # Target namespace for your application
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
