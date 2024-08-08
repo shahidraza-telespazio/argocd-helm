@@ -1,0 +1,20 @@
+app:
+  name: myapp
+
+replicaCount: 5
+
+image:
+  repository: shahidraza0098/argocd-fastapi
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  hosts:
+    - host: myapp.local
+      paths:
+        - path: /
